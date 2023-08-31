@@ -43,10 +43,6 @@ jobs:
         git checkout ${{ vars.DEPLOYMENT_BRANCH }}
         git reset --hard
         sudo git clean -d -x -f
-
-        git add *
-        git commit -m "cleaning branch"
-        git push
     - name: Applying stashed files to ${{ vars.DEPLOYMENT_BRANCH }}
       run: |
         echo "Applying stash"

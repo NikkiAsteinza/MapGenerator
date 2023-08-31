@@ -43,7 +43,7 @@ jobs:
         git checkout ${{ vars.DEPLOYMENT_BRANCH }}
         git reset --hard
         sudo git clean -d -x -f
-        rm -r *
+
         git add *
         git commit -m "cleaning branch"
         git push

@@ -14,13 +14,13 @@ jobs:
     - uses: actions/checkout@v2
     - name: Checkout
       run: |
-            echo "Attempting to install pygbag"
-            python -m pip install pygbag
-            echo "Successfully installed pygbag"
-            echo "Attempting to build the game"
-            python -m pygbag --build MapGenerator.py
-            echo "Successfully build the game and complied to WebAssembly"
-            ls
+        echo "Attempting to install pygbag"
+        python -m pip install pygbag
+        echo "Successfully installed pygbag"
+        echo "Attempting to build the game"
+        python -m pygbag --build MapGenerator.py
+        echo "Successfully build the game and complied to WebAssembly"
+        ls
     # Deployment
     - name: Stash build result and reset local changes
       run: |
@@ -37,8 +37,9 @@ jobs:
     # Deployment
     - name: Cleaning gh-pages branch
       run: |
+        
         echo "Switch to ${{ vars.DEPLOYMENT_BRANCH }}"
-        git switch -f ${{ vars.DEPLOYMENT_BRANCH }}
+        git checkout ${{ vars.DEPLOYMENT_BRANCH }}
         git reset --hard
         sudo git clean -d -x -f
         rm -r *

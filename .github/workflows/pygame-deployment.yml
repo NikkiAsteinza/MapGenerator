@@ -55,8 +55,8 @@ jobs:
       run: |
         cd ${{ vars.BUILD_PATH }}
         ls
-        cp -r * ../../../
-        cd ../../../
+        cp -r * ../
+        cd ../
         rm -r ${{ vars.BUILD_PATH }}
         ls
         pwd

@@ -39,6 +39,7 @@ jobs:
       run: |
         
         echo "Switch to ${{ vars.DEPLOYMENT_BRANCH }}"
+        git pull
         git checkout ${{ vars.DEPLOYMENT_BRANCH }}
         git reset --hard
         sudo git clean -d -x -f

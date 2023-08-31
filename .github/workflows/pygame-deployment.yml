@@ -2,7 +2,7 @@ name: Build Map Generator with Pygbag
 on:
   push:
     branches:
-      - main
+      - master
   workflow_dispatch:
 
 jobs:

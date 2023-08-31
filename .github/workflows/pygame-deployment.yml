@@ -20,12 +20,12 @@ jobs:
             echo "Attempting to build the game"
             python -m pygbag --build MapGenerator.py
             echo "Successfully build the game and complied to WebAssembly"
-
-    - name : "Upload to GitHub pages branch gh-pages"
-      uses: JamesIves/github-pages-deploy-action@4.1.7
-      with:
-        branch: gh-pages
-        folder: MapGenerator/build/web
+            ls
+    # - name : "Upload to GitHub pages branch gh-pages"
+    #   uses: JamesIves/github-pages-deploy-action@4.1.7
+    #   with:
+    #     branch: gh-pages
+    #     folder: MapGenerator/build/web
     # Deployment
     - name: Stash build result and reset local changes
       run: |

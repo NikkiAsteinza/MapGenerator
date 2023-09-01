@@ -3,6 +3,7 @@ import numpy as np
 import time
 import os
 import sys
+import asyncio
 #Path
 path= os.path.dirname(os.path.realpath(__file__))
 #Iniciar pygame
@@ -125,7 +126,7 @@ def pintarMapa(rows, columns,map):
                  color=(86,72,74)
                  screen.blit(pygame.transform.scale(wall,(width,height)),(x,y))
 
-def main():
+async def main():
     #Se acabó
     endGame=False
     #Mapa inicial
@@ -166,4 +167,4 @@ def main():
                 sys.exit()
 
 if __name__ == '__main__':
-    main()
+    asyncio.run(main())

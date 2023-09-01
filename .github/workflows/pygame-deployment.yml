@@ -17,6 +17,7 @@ jobs:
         echo "Attempting to install pygbag"
         pip install pygame pygbag
         pip install numpy
+        pip install asyncio
         echo "Successfully installed pygbag"
         echo "Attempting to build the game"
         python -m pygbag --build MapGenerator.py

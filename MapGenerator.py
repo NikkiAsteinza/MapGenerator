@@ -21,6 +21,15 @@ ground = pygame.image.load(path+r'\ground.png')
 #Font
 font = pygame.font.Font(path+r'\font.otf', 80)
 font_color=(0,0,0,0)
+# white color
+color = (255,255,255)
+text = font.render('PLAY' , True , color)
+
+# light shade of the button
+color_light = (170,170,170)
+  
+# dark shade of the button
+color_dark = (100,100,100)
 #Matriz
 rows=30
 columns=30
@@ -125,8 +134,7 @@ def pintarMapa(rows, columns,map):
             else:
                  color=(86,72,74)
                  screen.blit(pygame.transform.scale(wall,(width,height)),(x,y))
-
-async def main():
+def iterar():
     #Se acabó
     endGame=False
     #Mapa inicial
@@ -166,5 +174,45 @@ async def main():
             if event.type== pygame.QUIT:
                 sys.exit()
 
+class MapGenerator(object):
+    async def main(self):
+        while True:
+        
+            for ev in pygame.event.get():
+                
+                if ev.type == pygame.QUIT:
+                    pygame.quit()
+                    
+                #checks if a mouse is clicked
+                if ev.type == pygame.MOUSEBUTTONDOWN:
+                    
+                    #if the mouse is clicked on the
+                    # button the game is terminated
+                    if size[0]/2-200 <= mouse[0] <= size[0]/2+200 and size[1]/2-50 <= mouse[1] <= size[1]/2+50:
+                        iteracion()
+                        
+            # fills the screen with a color
+            screen.fill((60,25,60))
+            
+            # stores the (x,y) coordinates into
+            # the variable as a tuple
+            mouse = pygame.mouse.get_pos()
+            
+            # if mouse is hovered on a button it
+            # changes to lighter shade 
+            if size[0]/2-200 <= mouse[0] <= size[0]/2+200 and size[1]/2-50 <= mouse[1] <= size[1]/2+50:
+                pygame.draw.rect(screen,color_light,[size[0]/2-200,size[1]/2-50,400,100])
+                
+            else:
+                pygame.draw.rect(screen,color_dark,[size[0]/2-200,size[1]/2-50,400,100])
+            
+            # superimposing the text onto our button
+            screen.blit(text , (size[0]/2,size[1]/2))
+            
+            # updates the frames of the game
+            pygame.display.update()
+    
+
 if __name__ == '__main__':
-    asyncio.run(main())
+    game = MapGenerator()
+    asyncio.run(game.main())

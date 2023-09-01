@@ -18,7 +18,7 @@ grass = pygame.image.load(path+r'\grass.png')
 wall = pygame.image.load(path+r'\wall.png')
 ground = pygame.image.load(path+r'\ground.png')
 #Font
-font = pygame.font.Font(path+r'\font.ttf', 80)
+font = pygame.font.Font(path+r'\font.otf', 80)
 font_color=(0,0,0,0)
 #Matriz
 rows=30

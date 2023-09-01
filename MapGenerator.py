@@ -189,7 +189,7 @@ class MapGenerator(object):
                     #if the mouse is clicked on the
                     # button the game is terminated
                     if size[0]/2-200 <= mouse[0] <= size[0]/2+200 and size[1]/2-50 <= mouse[1] <= size[1]/2+50:
-                        iteracion()
+                        iterar()
                         
             # fills the screen with a color
             screen.fill((60,25,60))
@@ -211,6 +211,7 @@ class MapGenerator(object):
             
             # updates the frames of the game
             pygame.display.update()
+            await asyncio.sleep(0)
     
 
 if __name__ == '__main__':

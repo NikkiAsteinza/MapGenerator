@@ -174,46 +174,45 @@ def iterar():
             if event.type== pygame.QUIT:
                 sys.exit()
 
-class MapGenerator(object):
-    async def main(self):
-        while True:
+
+async def main():
+    while True:
+    
+        for ev in pygame.event.get():
+            
+            if ev.type == pygame.QUIT:
+                pygame.quit()
+                
+            #checks if a mouse is clicked
+            if ev.type == pygame.MOUSEBUTTONDOWN:
+                
+                #if the mouse is clicked on the
+                # button the game is terminated
+                if size[0]/2-200 <= mouse[0] <= size[0]/2+200 and size[1]/2-50 <= mouse[1] <= size[1]/2+50:
+                    iterar()
+                    
+        # fills the screen with a color
+        screen.fill((60,25,60))
         
-            for ev in pygame.event.get():
-                
-                if ev.type == pygame.QUIT:
-                    pygame.quit()
-                    
-                #checks if a mouse is clicked
-                if ev.type == pygame.MOUSEBUTTONDOWN:
-                    
-                    #if the mouse is clicked on the
-                    # button the game is terminated
-                    if size[0]/2-200 <= mouse[0] <= size[0]/2+200 and size[1]/2-50 <= mouse[1] <= size[1]/2+50:
-                        iterar()
-                        
-            # fills the screen with a color
-            screen.fill((60,25,60))
+        # stores the (x,y) coordinates into
+        # the variable as a tuple
+        mouse = pygame.mouse.get_pos()
+        
+        # if mouse is hovered on a button it
+        # changes to lighter shade 
+        if size[0]/2-200 <= mouse[0] <= size[0]/2+200 and size[1]/2-50 <= mouse[1] <= size[1]/2+50:
+            pygame.draw.rect(screen,color_light,[size[0]/2-200,size[1]/2-50,400,100])
             
-            # stores the (x,y) coordinates into
-            # the variable as a tuple
-            mouse = pygame.mouse.get_pos()
-            
-            # if mouse is hovered on a button it
-            # changes to lighter shade 
-            if size[0]/2-200 <= mouse[0] <= size[0]/2+200 and size[1]/2-50 <= mouse[1] <= size[1]/2+50:
-                pygame.draw.rect(screen,color_light,[size[0]/2-200,size[1]/2-50,400,100])
-                
-            else:
-                pygame.draw.rect(screen,color_dark,[size[0]/2-200,size[1]/2-50,400,100])
-            
-            # superimposing the text onto our button
-            screen.blit(text , (size[0]/2,size[1]/2))
-            
-            # updates the frames of the game
-            pygame.display.update()
-            await asyncio.sleep(0)
+        else:
+            pygame.draw.rect(screen,color_dark,[size[0]/2-200,size[1]/2-50,400,100])
+        
+        # superimposing the text onto our button
+        screen.blit(text , (size[0]/2,size[1]/2))
+        
+        # updates the frames of the game
+        pygame.display.update()
+        await asyncio.sleep(0)
     
 
 if __name__ == '__main__':
-    game = MapGenerator()
-    asyncio.run(game.main())
+    asyncio.run(main())

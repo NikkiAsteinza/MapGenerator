@@ -15,6 +15,7 @@ jobs:
     - name: Checkout
       run: |
         echo "Attempting to install pygbag"
+        python3 -m pip install -U pygame --user
         pip install pygame pygbag
         pip install numpy
         pip install asyncio
